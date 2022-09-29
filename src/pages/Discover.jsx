@@ -1,8 +1,13 @@
 import {Error,Loader,SongCard} from '../components';
 import {genres} from '../assets/constants';
 import {useGetTopChartsQuery} from '../redux/services/shazamCore'
+import {useDispatch,useSelector} from "react-redux"
 
 const Discover = () => {
+  const dispatch = useDispatch();
+  const { genreListId } = useSelector((state) => state.player);
+  // for specific state (slice) refer player slice 
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
   const {data,isFetching, error} = useGetTopChartsQuery();
 
     const genreTitle = "Pop"
@@ -26,7 +31,10 @@ const Discover = () => {
           <SongCard
             key={song.key}
             song={song}
+            activeSong={activeSong}
+            isPlaying={isPlaying}
             i={i}
+            data={data}
           />
         ))}
       </div>
