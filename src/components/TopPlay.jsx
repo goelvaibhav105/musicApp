@@ -97,7 +97,8 @@ const TopPlay = () => {
           </Link>
         </div>
 
-{/* Basically A slider  */}
+      {/* Basically A slider  */}
+      
         <Swiper
           slidesPerView="auto"
           spaceBetween={15}
